@@ -115,12 +115,13 @@ resource "aws_eip_association" "hashicat" {
   allocation_id = aws_eip.hashicat.id
 }
 
-resource "aws_instance" "devops" {
+resource "aws_instance" "hashicat" {
   ami                         = data.aws_ami.ubuntu.id
   instance_type               = var.instance_type
   key_name                    = aws_key_pair.hashicat.key_name
   associate_public_ip_address = true
   Billable                    = true
+  Department                  = devops
   subnet_id                   = aws_subnet.hashicat.id
   vpc_security_group_ids      = [aws_security_group.hashicat.id]
 
